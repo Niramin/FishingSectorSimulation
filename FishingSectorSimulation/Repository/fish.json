@@ -1,0 +1,17 @@
+﻿{
+  "bluefish_tuna": {
+    "population": "1600000",
+    "weight_kg": "60",
+    "price_usd_per_kg": "15",
+    "life_years": "15",
+    "no_of_offspring_in_a_year": "100000-300000",
+    "location": "Sea of Japan",
+    "breeding_season": "June-August",
+    "sexually_active_age": "7",
+    "daily_spawn_eggs": "780000-35000000",
+    "egg_survive_chance": "2/30000000",
+    "sources": [
+      "https://animaldiversity.org/accounts/Thunnus_orientalis/"
+    ]
+  }
+}
