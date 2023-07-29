@@ -4,9 +4,94 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FishingSectorSimulation.View"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="496" Width="800">
+    <Grid Background="#FF595656">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Bluefin Tuna Population" ></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Month" Labels="{Binding Months}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
+
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Bluefin Tuna Population" ></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Month" Labels="{Binding Months}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
+
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Bluefin Tuna Population" ></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Month" Labels="{Binding Months}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
+
+
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Bluefin Tuna Population" ></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Month" Labels="{Binding Months}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Margin="10" Background="#FFF2EFEF" VerticalAlignment="Center">
+                    <Button Content="Start Simulation" Padding="5,0,5,0"></Button>
+                </StackPanel>
+                <StackPanel Margin="10" Background="#FFF2EFEF" VerticalAlignment="Center">
+                    <TextBlock Padding="5,0,5,0">Price of Sushi </TextBlock>
+                    <Button Content="Increase" Padding="5,0,5,0"></Button>
+                    <Button Content="Cap" Padding="5,0,5,0"></Button>
+                    <Button Content="Decrease" Padding="5,0,5,0"></Button>
+                </StackPanel>
+                <StackPanel Margin="10" Background="#FFF2EFEF"  VerticalAlignment="Center">
+                    <TextBlock  Padding="5,0,5,0">Fisher Income</TextBlock>
+                    <Button Content="Increase"  Padding="5,0,5,0"></Button>
+                    <Button Content="Cap"  Padding="5,0,5,0"></Button>
+                    <Button Content="Decrease"  Padding="5,0,5,0"></Button>
+                </StackPanel>
+                <StackPanel Margin="10" Background="#FFF2EFEF" VerticalAlignment="Center">
+                    <TextBlock Padding="5,0,5,0">Weight of Fish Caught </TextBlock>
+                    <Button Content="Increase" Padding="5,0,5,0"></Button>
+                    <Button Content="Cap" Padding="5,0,5,0"></Button>
+                    <Button Content="Decrease" Padding="5,0,5,0"></Button>
+                </StackPanel>
+                
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
