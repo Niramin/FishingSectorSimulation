@@ -137,19 +137,14 @@ namespace FishingSectorSimulation.ViewModel
         {
             int monthOfYear = month % 12;
             _fishNetwork.population -= 5555;
-            _fisherNetwork.income = 5555 * 600;
+            _fisherNetwork.income = 0;
             if (monthOfYear == 8 || monthOfYear == 6 || monthOfYear == 7)
             {
                 _fishNetwork.population += 5555;
-                _fisherNetwork.income -= 5555 * 600;
+                _fisherNetwork.income = (int)(5555 * 600*(0.9));
 
             }
-            if (monthOfYear == 4 || monthOfYear == 5 || monthOfYear == 6)
-            {
-         
-                _fisherNetwork.income = (int)(1.1* _fisherNetwork.income);
-
-            }
+            
             if (monthOfYear == 8)
             {
                 _fishNetwork?.growByFactor(1.03228011546);
