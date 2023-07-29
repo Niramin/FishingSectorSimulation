@@ -87,6 +87,7 @@ namespace FishingSectorSimulation.ViewModel
             _fisherNetwork = new FisherNetwork();
             _fisherNetwork.population = 136000;
             _fisherNetwork.publisher.Subscribe(messageFromFisher);
+            
             messageFromFisher.Subscribe(updateFishIncomeSeries);
 
         }
@@ -141,6 +142,12 @@ namespace FishingSectorSimulation.ViewModel
             {
                 _fishNetwork.population += 5555;
                 _fisherNetwork.income -= 5555 * 600;
+
+            }
+            if (monthOfYear == 4 || monthOfYear == 5 || monthOfYear == 6)
+            {
+         
+                _fisherNetwork.income = (int)(1.1* _fisherNetwork.income);
 
             }
             if (monthOfYear == 8)
