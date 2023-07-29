@@ -45,7 +45,7 @@
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel Margin="10" Background="#FFF2EFEF" VerticalAlignment="Center">
-                    <Button Content="Start Simulation" Padding="5,0,5,0" Command="{Binding StartSimulation}"></Button>
+                    <Button Content="Start Simulation" Padding="5,0,5,0" Command="{Binding StartSimulation}" x:Name="startbtn"></Button>
                 </StackPanel>
 
             </StackPanel>

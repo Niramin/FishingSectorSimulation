@@ -19,9 +19,22 @@ namespace FishingSectorSimulation.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool flag = false;
         public MainWindow()
         {
             InitializeComponent();
+            startbtn.Click += (sender, e) =>
+            {
+                if (flag == false)
+                {
+                    flag = true;
+                    startbtn.Content = "Stop Simulation";
+                }
+                else {
+                    flag = false;
+                    startbtn.Content = "Start Simulation";
+                }
+            };
         }
     }
 }
