@@ -9,10 +9,15 @@ namespace FishingSectorSimulation.Model
 {
     public class FisherNetwork : INetwork
     {
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int population { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Subject<string> publisher { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string? Name { get ; set ; }
+        public int population { get ; set ; }
+        public Subject<string> publisher { get ; set; }
 
+        public int income { get; set; }
+        public FisherNetwork()
+        {
+            this.publisher = new Subject<string>();
+        }
         public void addNodes(int quantity)
         {
             throw new NotImplementedException();
@@ -20,12 +25,20 @@ namespace FishingSectorSimulation.Model
 
         public void growByFactor(double factor)
         {
-            throw new NotImplementedException();
+            double ans = population * factor;
+            population = (int)ans;
         }
 
         public void removeNodes(int quantity)
         {
             throw new NotImplementedException();
+        }
+
+        public void reportIncome()
+        {
+            double ans = income /population;
+            int ax = (int)ans;
+            publisher.OnNext(ax.ToString());
         }
     }
 }

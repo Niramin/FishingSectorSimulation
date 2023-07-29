@@ -13,7 +13,10 @@ namespace FishingSectorSimulation.Model
 
         int population { get; set; }
 
-        void growByFactor(double factor);
+        void growByFactor(double factor) {
+            double ans = population * factor;
+            population = (int)ans;
+        }
 
         void addNodes(int quantity);
 

@@ -25,12 +25,10 @@ namespace FishingSectorSimulation.ViewModel
 
         //For View to Bind to
         public string[]? TimeMonth { get; set; }
-        public SeriesCollection SushiPriceSeries { get; set; }
-        public SeriesCollection FishCaughtWeightSeries { get; set; }
         public SeriesCollection FishPopulationSeries { get; set; }
         public SeriesCollection FisherIncomeSeries { get; set; }
-
         public ICommand? StartSimulation { get; set; }
+        public Func<double, string> YFormatter { get; set; }
 
         //private local stuff
         private FishNetwork? _fishNetwork;
@@ -50,23 +48,15 @@ namespace FishingSectorSimulation.ViewModel
             executeCycle = new ActionBlock<int>(val=>oneMonthAdvance());
 
             StartSimulation = new RelayCommand(startstopSimulation, (parameter) => { return true; });
-            SushiPriceSeries = new SeriesCollection {
 
-                new LineSeries{
-                    Values = new ChartValues<int>()
-                }
-            };
 
-            FishCaughtWeightSeries = new SeriesCollection {
 
-                new LineSeries{
-                    Values = new ChartValues<int>()
-                }
-            };
+            YFormatter = value => value.ToString("N0");
 
             FishPopulationSeries = new SeriesCollection {
 
                 new LineSeries{
+                    Title ="Fish Population",
                     Values = new ChartValues<int>()
                 }
             };
@@ -74,6 +64,7 @@ namespace FishingSectorSimulation.ViewModel
             FisherIncomeSeries = new SeriesCollection {
 
                 new LineSeries{
+                    Title ="Income from Bluefin",
                     Values = new ChartValues<int>()
                 }
             };
@@ -93,8 +84,10 @@ namespace FishingSectorSimulation.ViewModel
             messageFromFish.Subscribe(updateFishPopulationSeries);
 
             //fishermen
-            //_fisherNetwork = new FisherNetwork();
-            //_fisherNetwork.population = 136000;
+            _fisherNetwork = new FisherNetwork();
+            _fisherNetwork.population = 136000;
+            _fisherNetwork.publisher.Subscribe(messageFromFisher);
+            messageFromFisher.Subscribe(updateFishIncomeSeries);
 
         }
 
@@ -117,7 +110,7 @@ namespace FishingSectorSimulation.ViewModel
         {
             int count = Int32.Parse(fishMessage);
             _fishPopulationCache.Enqueue(count);
-            if (FishPopulationSeries[0].Values.Count > 6)
+            if (FishPopulationSeries[0].Values.Count > 20)
             {
                 FishPopulationSeries[0].Values.RemoveAt(0);
 
@@ -126,15 +119,38 @@ namespace FishingSectorSimulation.ViewModel
 
         }
 
+        private void updateFishIncomeSeries(string fisherMessage)
+        {
+            int count = Int32.Parse(fisherMessage);
+            _fishPopulationCache.Enqueue(count);
+            if (FisherIncomeSeries[0].Values.Count > 20)
+            {
+                FisherIncomeSeries[0].Values.RemoveAt(0);
+
+            }
+            FisherIncomeSeries[0].Values.Add(count);
+
+        }
+
         private void oneMonthAdvance()
         {
             int monthOfYear = month % 12;
-            if (monthOfYear == 6 || monthOfYear == 7 || monthOfYear == 8)
+            _fishNetwork.population -= 5555;
+            _fisherNetwork.income = 5555 * 600;
+            if (monthOfYear == 8 || monthOfYear == 6 || monthOfYear == 7)
+            {
+                _fishNetwork.population += 5555;
+                _fisherNetwork.income -= 5555 * 600;
+
+            }
+            if (monthOfYear == 8)
             {
                 _fishNetwork?.growByFactor(1.03228011546);
                 
             }
-            _fishNetwork?.reportPopulation();
+            
+            _fishNetwork.reportPopulation();
+            _fisherNetwork.reportIncome();
             month++;
         }
     }
