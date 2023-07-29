@@ -6,9 +6,7 @@
     "life_years": "15",
     "location": "Sea of Japan",
     "breeding_season": "June-August",
-    "sexually_active_age": "5",
-    "daily_spawn_eggs": "780000-35000000",
-    "adult_survive_chance_for_eggs": "2/30000000", 
+    "yearly_growth_rate": "10 percent",
     "sources": [
       "https://animaldiversity.org/accounts/Thunnus_orientalis/"
     ]
