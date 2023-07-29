@@ -30,7 +30,7 @@ namespace FishingSectorSimulation.Model
             for (int i = 0; i < 1600000; i++)
             {
                 IFish adultBluefinTuna = new BluefinTuna();
-                adultBluefinTuna.age = 5;
+                adultBluefinTuna.age = 6;
                 _fishingEconomy.addFish(adultBluefinTuna);
             }
         }

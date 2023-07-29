@@ -86,7 +86,13 @@ namespace FishingSectorSimulation.Model
 
         private void reportFishPopulation()
         {
-            _fishPopulationPublisher.OnNext($"{_month},{_fishCount}");
+            string message = "";
+            for (int m = 1; m < _month; m++)
+            {
+                message += $"{getMonthName(m)},";
+            }
+            message += $"{getMonthName(_month)}:{_fishCount}";
+            _fishPopulationPublisher.OnNext(message);
         }
 
         private void fishNextMonth(bool breedingSeason = false)
@@ -143,13 +149,14 @@ namespace FishingSectorSimulation.Model
 
         }
 
-        private string getMonthName()
+        private string getMonthName(int monther = -1)
         {
             //month 1 is January
 
             string monthval = "";
             int monthint = _month % 12;
-
+            if(monther!= -1) monthint = monther%12;
+                    
             switch(monthint) {
                 case 1:
                     monthval = "January";

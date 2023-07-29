@@ -1,4 +1,6 @@
-﻿using FishingSectorSimulation.View;
+﻿using FishingSectorSimulation.Model;
+using FishingSectorSimulation.View;
+using FishingSectorSimulation.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,6 +27,9 @@ namespace FishingSectorSimulation
             window.Show();
             */
             MainWindow window = new MainWindow();
+            MainViewModel mainViewModel = new MainViewModel();
+            window.DataContext = mainViewModel;
+
             window.Show();
         }
     }
