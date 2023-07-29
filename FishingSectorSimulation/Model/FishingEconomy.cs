@@ -13,7 +13,6 @@ namespace FishingSectorSimulation.Model
         private static FishingEconomy _instance = null;
         private static readonly object _instanceLock = new object();
         private string _name="";
-        private string _monthName = "";
         private Subject<string> _publisher = new Subject<string>();
         private Subject<string> _fishPopulationPublisher = new Subject<string>();
         private Dictionary<string,IFish> _fish = new Dictionary<string, IFish>();
@@ -41,7 +40,7 @@ namespace FishingSectorSimulation.Model
 
         public int month => _month;
 
-        public string monthName => _monthName;
+        public string monthName => getMonthName();
 
         public Subject<string> networkPublisher { get => _publisher;}
 
@@ -51,7 +50,11 @@ namespace FishingSectorSimulation.Model
         {
             
             reportMessage("Going to next month!");
-            fishNextMonth();
+            if (_month == 5 || _month == 6 || _month == 7)
+            { fishNextMonth(true); }
+            else { 
+                fishNextMonth();
+            }
             _month++;
             reportFishPopulation();
         }
@@ -67,14 +70,14 @@ namespace FishingSectorSimulation.Model
             _publisher.OnNext(message);
         }
 
-        private void addFish(IFish fish)
+        public void addFish(IFish fish)
         {
             _fish.Add(fish.fishid,fish);
             _fishCount++;
             
         }
 
-        private void removeFish(IFish fish)
+        public void removeFish(IFish fish)
         {
             _fish.Remove(fish.fishid);
             _fishCount--;
@@ -138,6 +141,54 @@ namespace FishingSectorSimulation.Model
            
             
 
+        }
+
+        private string getMonthName()
+        {
+            //month 1 is January
+
+            string monthval = "";
+            int monthint = _month % 12;
+
+            switch(monthint) {
+                case 1:
+                    monthval = "January";
+                    break;
+                case 2:
+                    monthval = "February";
+                    break;
+                case 3:
+                    monthval = "March";
+                    break;
+                case 4:
+                    monthval = "April";
+                    break;
+                case 5:
+                    monthval = "May";
+                    break;
+                case 6:
+                    monthval = "June";
+                    break;
+                case 7:
+                    monthval = "July";
+                    break;
+                case 8:
+                    monthval = "August";
+                    break;
+                case 9:
+                    monthval = "September";
+                    break;
+                case 10:
+                    monthval = "October";
+                    break;
+                case 11:
+                    monthval = "November";
+                    break;
+                case 12:
+                    monthval = "December";
+                    break;
+            }
+            return monthval;
         }
     }
 }
