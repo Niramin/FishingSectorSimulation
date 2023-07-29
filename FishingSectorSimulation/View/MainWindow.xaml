@@ -35,7 +35,7 @@
             <Grid Grid.Row="0" Grid.Column="1">
                 <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" >
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Title="Bluefin Tuna Population" ></lvc:Axis>
+                        <lvc:Axis Title="Weight of Fish Caught" ></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Title="Month" Labels="{Binding Months}"></lvc:Axis>
@@ -46,7 +46,7 @@
             <Grid Grid.Row="1" Grid.Column="0">
                 <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" >
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Title="Bluefin Tuna Population" ></lvc:Axis>
+                        <lvc:Axis Title="Price of Sushi" ></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Title="Month" Labels="{Binding Months}"></lvc:Axis>
@@ -58,7 +58,7 @@
             <Grid Grid.Row="1" Grid.Column="1">
                 <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" >
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Title="Bluefin Tuna Population" ></lvc:Axis>
+                        <lvc:Axis Title="Fisher Income" ></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Title="Month" Labels="{Binding Months}"></lvc:Axis>
